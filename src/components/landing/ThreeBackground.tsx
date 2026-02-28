@@ -6,7 +6,7 @@ import { Points, PointMaterial } from "@react-three/drei";
 import * as random from "maath/random/dist/maath-random.esm";
 
 function ParticleCloud(props: any) {
-    const ref = useRef<any>();
+    const ref = useRef<any>(null);
     // Generate a sphere distribution of points
     const sphere = random.inSphere(new Float32Array(3000 * 3), { radius: 1.5 });
 
