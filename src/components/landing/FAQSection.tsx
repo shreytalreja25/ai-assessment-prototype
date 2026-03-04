@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { ClientMounted } from "@/components/utils/ClientMounted";
 
 export function FAQSection() {
     return (
@@ -42,32 +43,34 @@ function AccordionItem({ title, content }: { title: string; content: string }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="border border-muted rounded-lg overflow-hidden transition-colors hover:border-primary/50">
-            <button
-                className="flex w-full items-center justify-between p-6 bg-background text-left focus:outline-none"
-                onClick={() => setIsOpen(!isOpen)}
-                aria-expanded={isOpen}
-            >
-                <span className="font-semibold text-lg">{title}</span>
-                <motion.div animate={{ rotate: isOpen ? 180 : 0 }}>
-                    <ChevronDown className="h-5 w-5 text-muted-foreground" />
-                </motion.div>
-            </button>
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="overflow-hidden"
-                    >
-                        <div className="p-6 pt-0 text-muted-foreground leading-relaxed">
-                            {content}
-                        </div>
+        <ClientMounted>
+            <div className="border border-muted rounded-lg overflow-hidden transition-colors hover:border-primary/50">
+                <button
+                    className="flex w-full items-center justify-between p-6 bg-background text-left focus:outline-none"
+                    onClick={() => setIsOpen(!isOpen)}
+                    aria-expanded={isOpen}
+                >
+                    <span className="font-semibold text-lg">{title}</span>
+                    <motion.div animate={{ rotate: isOpen ? 180 : 0 }}>
+                        <ChevronDown className="h-5 w-5 text-muted-foreground" />
                     </motion.div>
-                )}
-            </AnimatePresence>
-        </div>
+                </button>
+                <AnimatePresence>
+                    {isOpen && (
+                        <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="overflow-hidden"
+                        >
+                            <div className="p-6 pt-0 text-muted-foreground leading-relaxed">
+                                {content}
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
+        </ClientMounted>
     );
 }

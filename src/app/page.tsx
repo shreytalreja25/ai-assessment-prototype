@@ -24,7 +24,7 @@ export default function LandingPage() {
       {/* 3D Background - Fixed absolute positioned behind hero only */}
       <ThreeBackground />
 
-      <main className="flex-1 w-full flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-background">
+      <main className="relative flex-1 w-full flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-background overflow-hidden">
 
         {/* Entrance Hero Section */}
         <HeroSection onScrollToRoles={scrollToRoles} />
@@ -33,7 +33,7 @@ export default function LandingPage() {
         <FeaturesSection />
 
         {/* Role Selection / Access Portals */}
-        <section ref={rolesRef} className="py-24 px-4 bg-muted/40 dark:bg-black w-full border-t border-b">
+        <section ref={rolesRef} className="relative py-32 px-4 bg-gradient-to-b from-background via-muted/30 to-background dark:from-background dark:via-black/40 dark:to-background w-full border-t border-border/40">
           <div className="max-w-6xl mx-auto flex flex-col items-center">
             <div className="mb-12 text-center">
               <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
@@ -46,48 +46,49 @@ export default function LandingPage() {
 
             <div className="grid w-full grid-cols-1 gap-8 sm:grid-cols-3">
               {/* Student Card */}
-              <Card className="flex flex-col border-2 border-transparent transition-all hover:-translate-y-2 hover:border-primary hover:shadow-2xl hover:shadow-primary/20 bg-background">
+              <Card className="flex flex-col border border-border/50 transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_40px_-15px_rgba(255,204,0,0.15)] bg-background/60 backdrop-blur-xl">
                 <CardHeader className="text-center pb-2">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary ring-1 ring-primary/20">
                     <GraduationCap className="h-8 w-8" />
                   </div>
-                  <CardTitle className="text-2xl">Student</CardTitle>
-                  <CardDescription className="text-sm">Submit assignments & view feedback</CardDescription>
+                  <CardTitle className="text-2xl font-bold tracking-tight">Student</CardTitle>
+                  <CardDescription className="text-sm font-medium">Submit assignments & view feedback</CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-1 flex-col justify-end pt-6">
-                  <Button asChild className="w-full text-md h-12 rounded-xl" variant="outline">
+                  <Button asChild className="w-full text-md h-12 rounded-xl border-primary/20 hover:bg-primary/10" variant="outline">
                     <Link href="/student/dashboard">Login as Student</Link>
                   </Button>
                 </CardContent>
               </Card>
 
               {/* Instructor Card */}
-              <Card className="flex flex-col border-2 border-primary shadow-lg shadow-primary/10 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/30 scale-105 bg-background z-10">
-                <CardHeader className="text-center pb-2">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg">
+              <Card className="flex flex-col border border-primary/60 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.2)] dark:shadow-[0_10px_30px_-10px_rgba(255,204,0,0.2)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] dark:hover:shadow-[0_25px_50px_-12px_rgba(255,204,0,0.3)] scale-100 sm:scale-105 bg-background/80 backdrop-blur-2xl z-10 relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-xl pointer-events-none" />
+                <CardHeader className="text-center pb-2 relative">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/30 ring-1 ring-primary/50">
                     <User className="h-8 w-8" />
                   </div>
-                  <CardTitle className="text-2xl">Instructor / Tutor</CardTitle>
-                  <CardDescription className="text-sm">Review AI grading & release marks</CardDescription>
+                  <CardTitle className="text-2xl font-bold tracking-tight">Instructor / Tutor</CardTitle>
+                  <CardDescription className="text-sm font-medium">Review AI grading & release marks</CardDescription>
                 </CardHeader>
-                <CardContent className="flex flex-1 flex-col justify-end pt-6">
-                  <Button asChild className="w-full text-md h-12 rounded-xl shadow-lg shadow-primary/25">
+                <CardContent className="flex flex-1 flex-col justify-end pt-6 relative">
+                  <Button asChild className="w-full text-md h-12 rounded-xl shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 transition-shadow">
                     <Link href="/instructor/dashboard">Login as Instructor</Link>
                   </Button>
                 </CardContent>
               </Card>
 
               {/* Admin Card */}
-              <Card className="flex flex-col border-2 border-transparent transition-all hover:-translate-y-2 hover:border-primary hover:shadow-2xl hover:shadow-primary/20 bg-background">
+              <Card className="flex flex-col border border-border/50 transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_40px_-15px_rgba(255,204,0,0.15)] bg-background/60 backdrop-blur-xl">
                 <CardHeader className="text-center pb-2">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary ring-1 ring-primary/20">
                     <ShieldCheck className="h-8 w-8" />
                   </div>
-                  <CardTitle className="text-2xl">Admin</CardTitle>
-                  <CardDescription className="text-sm">Manage platform access & settings</CardDescription>
+                  <CardTitle className="text-2xl font-bold tracking-tight">Admin</CardTitle>
+                  <CardDescription className="text-sm font-medium">Manage platform access & settings</CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-1 flex-col justify-end pt-6">
-                  <Button asChild className="w-full text-md h-12 rounded-xl" variant="outline">
+                  <Button asChild className="w-full text-md h-12 rounded-xl border-primary/20 hover:bg-primary/10" variant="outline">
                     <Link href="/admin/dashboard">Login as Admin</Link>
                   </Button>
                 </CardContent>
