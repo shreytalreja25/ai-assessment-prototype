@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Clock, CalendarIcon } from "lucide-react";
+import { CheckCircle2, Clock, CalendarIcon, Mic } from "lucide-react";
 import Link from "next/link";
 
 export default function StudentTasksPage() {
@@ -23,6 +23,36 @@ export default function StudentTasksPage() {
             </div>
 
             <div className="grid gap-6">
+                <Card className="border-primary border-2 shadow-lg relative overflow-hidden bg-primary/5">
+                    <div className="absolute top-0 right-0 p-6 opacity-10">
+                        <Mic className="h-32 w-32 text-primary" />
+                    </div>
+                    <CardHeader>
+                        <div className="flex justify-between items-start">
+                            <div className="space-y-1">
+                                <Badge className="bg-primary text-primary-foreground">NEW ASSESSMENT</Badge>
+                                <CardTitle className="text-xl">AI Agent Implementation Viva</CardTitle>
+                            </div>
+                            <Badge variant="destructive" className="animate-pulse">Due in 5 days</Badge>
+                        </div>
+                        <CardDescription className="flex items-center gap-2 mt-2">
+                            <CalendarIcon className="h-4 w-4" /> Oct 22, 2026 (11:59 PM)
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="mb-4 text-sm max-w-2xl text-muted-foreground font-medium">
+                            Interactive Voice-Based Viva: You will be asked series of questions regarding your system design and orchestration patterns by our AI Assessment Agent.
+                        </p>
+                        <div className="flex gap-4">
+                            <Button asChild className="gap-2">
+                                <Link href="/student/tasks/oral">
+                                    <Mic className="h-4 w-4" /> Begin Oral Viva
+                                </Link>
+                            </Button>
+                        </div>
+                    </CardContent>
+                </Card>
+
                 <Card className="border-primary/50 relative overflow-hidden">
                     <div className="absolute top-0 right-0 p-6 opacity-10">
                         <Clock className="h-32 w-32 text-primary" />

@@ -7,6 +7,8 @@ import {
 } from "@/components/ui/card";
 import { Users, FileCheck2, HardDriveUpload, BrainCircuit } from "lucide-react";
 
+import { InstructorProgressFlow } from "@/components/instructor-progress";
+
 export default function InstructorDashboard() {
     return (
         <div className="flex flex-col gap-6">
@@ -16,6 +18,8 @@ export default function InstructorDashboard() {
                     Welcome back! Here is a summary of your ongoing assessments.
                 </p>
             </div>
+
+            <InstructorProgressFlow />
 
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 <Card>

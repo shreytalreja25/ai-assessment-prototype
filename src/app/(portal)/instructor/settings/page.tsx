@@ -13,7 +13,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Settings, Save, AlertTriangle, UserCheck } from "lucide-react";
 
+import { useTheme } from "@/components/theme-provider";
+
 export default function InstructorSettingsPage() {
+    const { theme, setTheme } = useTheme();
+
     return (
         <div className="flex flex-col gap-6 max-w-4xl mx-auto">
             <div className="flex justify-between items-center bg-white dark:bg-black sticky top-0 z-10 py-4 -my-4 mb-2">
@@ -30,6 +34,42 @@ export default function InstructorSettingsPage() {
             </div>
 
             <div className="grid gap-6">
+                <Card>
+                    <CardHeader>
+                        <div className="flex items-center gap-2">
+                            <Settings className="h-5 w-5 text-muted-foreground" />
+                            <CardTitle>Appearance & Theme</CardTitle>
+                        </div>
+                        <CardDescription>Customize the visual identity of your portal.</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="flex items-center justify-between py-2 border-b">
+                            <div className="space-y-0.5">
+                                <Label>Accent Color</Label>
+                                <div className="text-sm text-muted-foreground">Select the primary highlight color for the interface.</div>
+                            </div>
+                            <div className="flex gap-2">
+                                <Button 
+                                    variant={theme === "yellow" ? "default" : "outline"} 
+                                    size="sm" 
+                                    className={theme === "yellow" ? "bg-primary text-primary-foreground hover:bg-primary/90" : ""}
+                                    onClick={() => setTheme("yellow")}
+                                >
+                                    Classic Yellow
+                                </Button>
+                                <Button 
+                                    variant={theme === "blue" ? "default" : "outline"} 
+                                    size="sm"
+                                    className={theme === "blue" ? "bg-[#5eb5b5] text-white hover:bg-[#4d9494]" : ""}
+                                    onClick={() => setTheme("blue")}
+                                >
+                                    Modern Blue
+                                </Button>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
+
                 <div className="rounded-lg border border-amber-500/50 bg-amber-500/10 text-amber-800 dark:text-amber-200 p-4 flex items-start gap-3">
                     <AlertTriangle className="h-5 w-5 mt-0.5 text-amber-600 dark:text-amber-400" />
                     <div>
